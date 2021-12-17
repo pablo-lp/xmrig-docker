@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN git clone https://github.com/pablo-lp/xmrig.git \
     && mkdir xmrig/build && cd xmrig/build \
-    && cmake .. \
-    && make -j$(nproc)
+    && cmake -DWITH_OPENCL=OFF -DWITH_CUDA=OFF .. \
+    && make -j$(nproc)  
 
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
